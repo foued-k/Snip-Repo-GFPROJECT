@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+//Establish connection with MongoDb Atlas
 async function connectToDb() {
   try {
     await mongoose.connect(process.env.MONGODB_URL);
