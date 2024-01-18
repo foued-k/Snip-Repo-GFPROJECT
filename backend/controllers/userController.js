@@ -6,26 +6,26 @@ const requireAuth = require("../middleware/requireAuth");
 
 const signup = async (req, res) => {
   try {
-    //Get the email and password of req.body
-    const { email, password, snips, lists } = req.body;
+    //Get the username and password of req.body
+    const { username, password, snips, lists } = req.body;
     //Hash the password
     const hashedPassword = bcrypt.hashSync(password, 8);
     //Create a user with this data
-    await User.create({ email, password: hashedPassword, snips, lists });
+    const user = await User.create({ username, password: hashedPassword, snips, lists });
     //Send a response
-    res.sendStatus(200);
+    res.json({user});
   } catch (err) {
     console.log(err);
-    res.sendStatus(403);
+    res.sendStatus(500);
   }
 };
 
 const login = async (req, res) => {
   try {
-    //Get the email and body of req.body
-    const { email, password } = req.body;
-    //Find the user with requested email
-    const user = await User.findOne({ email });
+    //Get the username and body of req.body
+    const { username, password } = req.body;
+    //Find the user with requested username
+    const user = await User.findOne({ username });
     console.log(user);
     if (!user) return res.sendStatus(403);
     //Compare sent in password with found user password hash
@@ -55,6 +55,7 @@ const checkAuth = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
+    //Delete cookie
     res.clearCookie("Authorization");
     res.sendStatus(200);
   } catch (err) {
