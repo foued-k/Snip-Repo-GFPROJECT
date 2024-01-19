@@ -1,4 +1,7 @@
 import React from "react";
+import axios from "axios";
+import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,6 +11,26 @@ import Form from 'react-bootstrap/Form';
 // import {Link} from "react-router-dom";
 
 function Signup() {
+    // const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    // const [error, setError] = useState("");
+
+    function signup() {
+        axios.post("http://localhost:3020/signup", {username : username, password : password,})
+        .then(({data}) => {
+            console.log(data);
+            setUsername("");
+            setPassword("");
+            // if (data.msg === "user created successfully") {
+            //     //redirect the user to the login page
+            //     // navigate("/login");
+            // } else {
+            //     setError(data.msg);
+            // }
+        })
+    }
+
 
     return (
         <Container className="signup-container">
@@ -37,18 +60,18 @@ function Signup() {
                             label="Username"
                             className="mb-3"
                         >
-                            <Form.Control type="text" placeholder="username" onChange={(e) => console.log(e.target.value)}/>
+                            <Form.Control type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
                         </FloatingLabel>
 
                         <FloatingLabel controlId="floatingPassword" label="Password">
-                            <Form.Control type="password" placeholder="Password" onChange={(e) => console.log(e.target.value)}/>
+                            <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                         </FloatingLabel>
                         <div>
 
                         </div>
 
                         <div className="form-btn">
-                            <Button variant="dark">Sign up</Button>
+                            <Button variant="dark" onClick={()=>signup()}>Sign up</Button>
                         </div>
 
                         <p>Already have an account? Log in</p>
