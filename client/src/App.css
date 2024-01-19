@@ -1,19 +1,81 @@
-.App {
+/* .App {
   text-align: center;
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body, #root {
+  min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #1E1E1E;
 }
 
-.App-header {
+.nav-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.logout-btn {
+  background-color: #FF725E;
+  color: whitesmoke;
+  border: none;
+}
+
+.logout-btn:hover {
+  background-color: #fe5c47;
+}
+
+.signup-bodytext {
+  color: aqua;
+  padding-right: 30px;
+  max-width: 90%;
+}
+
+.img {
+  max-width: 60%;
+}
+
+.signup-container {
+  padding: 10px;
+  margin: 50px auto;
+}
+
+.signup-container .row {
+  padding: 10px;
+}
+
+.signup-form {
+  padding: 30px 50px;
+  background-color: lightgray;
+  border-radius: 8px;
+}
+
+.signup-form > * {
+  padding-bottom: 5px;
+}
+
+.signup-form button {
+  margin-top: 10px;
+  justify-content: right;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-code-title {
+  margin-top: 10px;
+}
+
+
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -35,4 +97,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
