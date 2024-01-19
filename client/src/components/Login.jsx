@@ -22,7 +22,7 @@ function Login() {
             password : password,
         })
         .then(({data}) => {
-            // console.log(data);
+            console.log(data);
             if (data) {
                 console.log("Signed in")
                 //redirect the user to the login page
@@ -73,7 +73,7 @@ function Login() {
                         </div>
 
                         <div className="form-btn">
-                            <Button variant="dark" onClick={console.log(username, password)}>Log in</Button>
+                            <Button variant="dark" onClick={()=>login()}>Log in</Button>
                         </div>
                         <p>Don't have an account? Sign up</p>
                     </div>
