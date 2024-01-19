@@ -74,6 +74,31 @@ body {
   margin-top: 10px;
 }
 
+.mySnippets, .dashboard, .card-title{
+  color: #FBFBFB;
+}
+
+
+.mySnippets .card {
+  background-color: #1E1E1E;
+  border: 1px solid #FBFBFB;
+}
+
+.card-header {
+  color: #FBFBFB;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.card-text {
+  color: #FF725E;
+}
+
+.dashboard, .mySnippets {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
 /* .App-header {
   background-color: #282c34;
