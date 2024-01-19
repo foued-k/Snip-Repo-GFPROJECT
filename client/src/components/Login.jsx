@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios";
+// import { useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,8 +8,31 @@ import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 // import {Link} from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Login() {
+    // const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    // const [error, setError] = useState("");
+
+    function login() {
+        axios.post("http://localhost:3020/login", {
+            username : username, 
+            password : password,
+        })
+        .then(({data}) => {
+            // console.log(data);
+            if (data) {
+                console.log("Signed in")
+                //redirect the user to the login page
+                // navigate("/profile");
+            } else {
+                console.log("Sign in failed")
+                // setError(data.msg);
+            }
+        })
+    }
 
     return (
         <Container className="signup-container">
@@ -37,18 +62,18 @@ function Login() {
                             label="Username"
                             className="mb-3"
                         >
-                            <Form.Control type="text" placeholder="username" onChange={(e) => console.log(e.target.value)}/>
+                            <Form.Control type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
                         </FloatingLabel>
 
                         <FloatingLabel controlId="floatingPassword" label="Password">
-                            <Form.Control type="password" placeholder="Password" onChange={(e) => console.log(e.target.value)}/>
+                            <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                         </FloatingLabel>
                         <div>
                             
                         </div>
 
                         <div className="form-btn">
-                            <Button variant="dark">Log in</Button>
+                            <Button variant="dark" onClick={console.log(username, password)}>Log in</Button>
                         </div>
                         <p>Don't have an account? Sign up</p>
                     </div>
