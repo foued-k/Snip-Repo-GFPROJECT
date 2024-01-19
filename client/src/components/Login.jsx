@@ -62,11 +62,11 @@ function Login() {
                             label="Username"
                             className="mb-3"
                         >
-                            <Form.Control type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
+                            <Form.Control type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
                         </FloatingLabel>
 
                         <FloatingLabel controlId="floatingPassword" label="Password">
-                            <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+                            <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         </FloatingLabel>
                         <div>
                             
