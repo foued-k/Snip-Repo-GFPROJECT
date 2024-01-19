@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
-// import { useState } from "react";
+import { useState } from "react";
 // import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function MySnippets() {
-    // const [snippets, setSnippets] = useState([]);
+    const [snippets, setSnippets] = useState([]);
 
     // function getSnippets() {
     //     try {
@@ -18,6 +18,17 @@ function MySnippets() {
     //     } catch (error) {
     //         console.log(error);
     //     }
+    // }
+
+    //  delete a single snippet and return the updated collection
+    // const deleteSnippet = async (_id) => {
+    //    const res = await axios.delete(`http://localhost:3020/snips/${_id}`);
+
+    //    const updatedSnippets = [...snippets].filter((e) => {
+    //     return e._id != _id;
+    //    });
+
+    //    setSnippets(updatedSnippets);
     // }
 
     return (
@@ -53,7 +64,8 @@ function MySnippets() {
 
                 <Card>
                 <Card.Header>
-                    <img src={require('../images/trash.png')} className="img justify-content-end" alt={""}/> </Card.Header>
+                    <img src={require('../images/trash.png')} className="img justify-content-end" alt={""} /> 
+                    </Card.Header>
                     <Card.Body>
                         <Card.Title>Snippet Title</Card.Title>
                         <Card.Text>
