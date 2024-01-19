@@ -6,22 +6,26 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import NavbarDashboard from './components/NavbarDashboard';
 import AddSnippet from './components/AddSnippet';
+import Dashboard from './components/Dashboard';
+import MySnippets from './components/MySnippets';
 
 function App() {
   return (
     <div>
       {/* <Routes>        
-      <Route path="/"  element={<Signup/>} />
+      <Route path="/signup"  element={<Signup/>} />
       <Route path="/login"  element={<Login />}/> */}
       {/* <Route path="/dashboard"  element={<Dashboard/>}/> */}
-      {/* <Route path="/profile"  element={<Profile/>}/>
-      <Route path="/fitness"  element={<Fitness/>}/>
-      <Route path="/weight"  element={<Weight/>}/> */}
+      {/* <Route path="/snips"  element={<AddSnippet/>}/>
+      <Route path="/dashboard"  element={<Dashboard/>}/>
+      <Route path="/MySnippets"  element={<MySnippets/>}/> */}
       {/* </Routes> */}
       <NavbarDashboard />
       <Signup />
       <Login />
       <AddSnippet />
+      <Dashboard/>
+      <MySnippets/>
 
     </div>
   );
