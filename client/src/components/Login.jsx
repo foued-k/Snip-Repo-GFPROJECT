@@ -1,89 +1,116 @@
 import React, { useState } from "react";
 import axios from "axios";
 import NavbarMain from "./NavbarMain";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 import { useNavigate, Link } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 
 function Login() {
-    const navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    // const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+  const [error, setError] = useState("");
 
-    function login() {
-        axios.post("http://localhost:3020/login", {
-          username: username,
-          password: password,
-        }).then(({ data }) => {
-          console.log(data);
-          if (data) {
-            console.log("Signed in")
-            //redirect the user to the dashboard
-            navigate("/dashboard");
-          } else {
-            console.log("Sign in failed")
-            // setError(data.msg);
-          }
-        })
-      }
-      
-    return (
-        <div>
-            <NavbarMain />
+  async function login() {
+    try {
+      await axios.post(
+        "http://localhost:3020/login",
+        { username, password },
+        { withCredentials: true }
+      );
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.response.data.msg);
+      setShow(true);
+    }
+  }
 
-            <Container className="signup-container">
-                <Row>
-                    <Col>
-                        <div>
-                            <p className="signup-bodytext">
+  return (
+    <div>
+      <NavbarMain />
+      <Container className="signup-container">
+        <Row>
+          <Col lg={6} md={12}>
+            <p className="signup-bodytext">
+              Welcome to <span className="logo white">SnipRepo</span>! If
+              you're already part of our coding community, it's time to log in
+              and access your personalized collection of code snippets. Whether
+              you're a seasoned developer or just getting started, SnipRepo
+              makes it easy to find and manage your favorite code snippets.
+            </p>
 
-                                SnipRepo is a powerful and user-friendly web application
-                                designed to streamline the management and organization of code snippets for developers.
-                                Whether you're a seasoned programmer or a coding enthusiast,
-                                SnipRepo provides an intuitive platform to store, categorize, search, and share your code snippets effortlessly.
+            <img
+              src={require("../images/Img2.png")}
+              className="img2"
+              alt={""}
+            />
+          </Col>
 
-                            </p>
-                            <img src={require('../images/Img2.png')} className="img" alt={""} />
-                        </div>
+          {/* </div>
+            </Container> */}
+          {/* </Col> */}
+          <Col lg={6} md={12}>
+            <div className="signup-form">
+              <h4>Welcome back!</h4>
+              <h6 className="subtitle">Log in to your account</h6>
 
-                    </Col>
-                    <Col>
+              <FloatingLabel
+                controlId="floatingInput"
+                label="Username"
+                className="mb-3"
+              >
+                <Form.Control
+                  type="text"
+                  placeholder="username"
+                  value={username}
+                  onChange={(e) => {
+                    setShow(false);
+                    setUsername(e.target.value);
+                  }}
+                />
+              </FloatingLabel>
 
-                        <div className="signup-form">
-                            <h3>Welcome back!</h3>
-                            <h5>Log in to your account</h5>
+              <FloatingLabel controlId="floatingPassword" label="Password">
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    setShow(false);
+                    setPassword(e.target.value);
+                  }}
+                />
+              </FloatingLabel>
+              <div></div>
+              {show && (
+                <Alert key="danger" variant="danger" className="alert">
+                  {error}
+                </Alert>
+              )}
+              <div className="form-btn">
+                <Button variant="dark" onClick={() => login()}>
+                  Log in
+                </Button>
+              </div>
 
-                            <FloatingLabel
-                                controlId="floatingInput"
-                                label="Username"
-                                className="mb-3"
-                            >
-                                <Form.Control type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                            </FloatingLabel>
-
-                            <FloatingLabel controlId="floatingPassword" label="Password">
-                                <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                            </FloatingLabel>
-                            <div>
-
-                            </div>
-
-                            <div className="form-btn">
-                                <Button variant="dark" onClick={() => login()}>Log in</Button>
-                            </div>
-                            <p>Don't have an account? <Link to={`/`} className="homepage-account-link">Sign up</Link></p>
-                        </div>
-
-                    </Col>
-                </Row>
-            </Container>
-        </div>
-    );
+              <p>
+                <span className="subtitle">Don't have an account?</span>
+                <Link to={`/`} className="homepage-account-link">
+                  Sign up
+                </Link>
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
 export default Login;
