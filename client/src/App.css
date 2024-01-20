@@ -96,14 +96,29 @@ body {
 }
 
 .dashboard, .mySnippets {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.dashboard .row {
+  min-height: 100vh;
+}
+
+.dashboard .row  div{
+  padding: 30px;
 }
 
 .dashboard-menu {
+  text-align: center;
+}
+
+.latestSnippets, .dashboard-menu {
   background-color: #FBFBFB;
   color: black;
-  text-align: center;
+}
+
+.latestSnippets {
+  border-radius: 8px;
 }
 
 /* .App-header {
