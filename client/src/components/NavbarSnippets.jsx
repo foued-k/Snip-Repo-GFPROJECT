@@ -9,7 +9,7 @@ function NavbarSnippets() {
         <Navbar bg="light" data-bs-theme="light" className="justify-content-between">
             <Container>
                 <Navbar.Brand className="text-center nav-brand"><Link to={'/dashboard'} className="links">Dashboard</Link></Navbar.Brand>
-                <h4>SnipRepo</h4>
+                <h4 className="logo">SnipRepo</h4>
                 <Button className="logout-btn">Logout</Button>
             </Container>
         </Navbar>

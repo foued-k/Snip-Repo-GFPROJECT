@@ -7,7 +7,7 @@ function NavbarMain() {
     return (
         <Navbar bg="light" data-bs-theme="light" id="main-nav-title">
         <Container>
-          <h4>SnipRepo</h4>
+          <h4 className="logo">SnipRepo</h4>
         </Container>
       </Navbar>
 
