@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 
 //user authentication paths
 app.post("/signup", userController.signup);
-app.post("/login", requireAuth, userController.login);
+app.post("/login", userController.login);
 app.get("/checkAuth", requireAuth, userController.checkAuth);
 app.get("/logout", userController.logout);
 
