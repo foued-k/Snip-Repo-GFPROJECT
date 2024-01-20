@@ -15,6 +15,23 @@ function Login() {
     const [password, setPassword] = useState("");
     // const [error, setError] = useState("");
 
+    function login() {
+        axios.post("http://localhost:3020/login", {
+          username: username,
+          password: password,
+        }).then(({ data }) => {
+          console.log(data);
+          if (data) {
+            console.log("Signed in")
+            //redirect the user to the dashboard
+            navigate("/dashboard");
+          } else {
+            console.log("Sign in failed")
+            // setError(data.msg);
+          }
+        })
+      }
+      
     return (
         <div>
             <NavbarMain />
