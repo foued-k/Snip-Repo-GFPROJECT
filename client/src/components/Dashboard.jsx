@@ -1,8 +1,10 @@
-// import { useState } from "react";
-// import axios from "axios";
+import { useState } from "react";
+import axios from "axios";
+import NavbarDashboard from "./NavbarDashboard";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
-    // const [snippets, setSnippets] = useState([]);
+    const [snippets, setSnippets] = useState([]);
 
     // function getSnippets() {
     //     try {
@@ -18,17 +20,21 @@ function Dashboard() {
     // }
 
     return (
-        <div className="container dashboard">
-            <div className="row">
-                <div className="col-4 dashboard-menu">
-                    <p>Add new snippets</p>
-                    <p>Add new snippets</p>
-                </div>
+        <div>
 
+            <NavbarDashboard/>
 
-            <div className="col">
-                <h3>My latest snippets</h3>
-                {/* <div>
+            <div className="container dashboard">
+                <div className="row">
+                    <div className="col-4 dashboard-menu">
+                        <p>Add new snippets</p>
+                        <p><Link to={`/mysnippets`} className="links">My snippets</Link></p>
+                    </div>
+
+                    <div className="col">
+                        <div className="latestSnippets">
+                            <h4>My latest snippets</h4>
+                            {/* <div className="d-flex gap-5">
                 {snippets.map((e) => {
                     return (
                         <div key={e._id}>
@@ -40,14 +46,10 @@ function Dashboard() {
                 )}
             </div> */}
 
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-            </div>
-
-
-
-
         </div>
     )
 }
