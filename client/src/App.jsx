@@ -1,33 +1,47 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
-// import { Route,Routes } from 'react-router-dom';
-// import NavbarMain from "./components/NavbarMain";
+import { useCookies } from "react-cookie";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import NavbarDashboard from './components/NavbarDashboard';
 import AddSnippet from './components/AddSnippet';
 import Dashboard from './components/Dashboard';
 import MySnippets from './components/MySnippets';
 
 function App() {
-  return (
-    <div>
-      {/* <Routes>        
-      <Route path="/signup"  element={<Signup/>} />
-      <Route path="/login"  element={<Login />}/> */}
-      {/* <Route path="/dashboard"  element={<Dashboard/>}/> */}
-      {/* <Route path="/snips"  element={<AddSnippet/>}/>
-      <Route path="/dashboard"  element={<Dashboard/>}/>
-      <Route path="/MySnippets"  element={<MySnippets/>}/> */}
-      {/* </Routes> */}
-      <NavbarDashboard />
-      <Signup />
-      <Login />
-      <AddSnippet />
-      <Dashboard/>
-      <MySnippets/>
+  const [cookies, setCookie] = useCookies(["user"]);
+  function handleLogin(user) {
+    setCookie("user", user, { path: "/" });
+    console.log(cookies);
+  }
 
-    </div>
+  function login(user) {
+    axios.post("http://localhost:3020/login", {
+      username: username,
+      password: password,
+    }).then(({ data }) => {
+      console.log(data);
+      if (data) {
+        console.log("Signed in")
+        //redirect the user to the dashboard
+        navigate("/dashboard");
+      } else {
+        console.log("Sign in failed")
+        // setError(data.msg);
+      }
+    })
+  }
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/newsnippet" element={<AddSnippet />} />
+        <Route path="/MySnippets" element={<MySnippets />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
