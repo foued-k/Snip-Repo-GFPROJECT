@@ -15,31 +15,14 @@ function App() {
     console.log(cookies);
   }
 
-  function login(user) {
-    axios.post("http://localhost:3020/login", {
-      username: username,
-      password: password,
-    }).then(({ data }) => {
-      console.log(data);
-      if (data) {
-        console.log("Signed in")
-        //redirect the user to the dashboard
-        navigate("/dashboard");
-      } else {
-        console.log("Sign in failed")
-        // setError(data.msg);
-      }
-    })
-  }
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/newsnippet" element={<AddSnippet />} />
-        <Route path="/MySnippets" element={<MySnippets />} />
+        <Route path="/MySnippets"  element={<MySnippets />} />
       </Routes>
     </BrowserRouter>
   );
