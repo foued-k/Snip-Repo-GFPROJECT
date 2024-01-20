@@ -49,9 +49,7 @@ const login = async (req, res) => {
     //Find the user with requested username
     const user = await User.findOne({ username });
     if (!user) {
-      return res
-        .status(400)
-        .send({ msg: "This username does not exist" });
+      return res.status(400).send({ msg: "This username does not exist" });
     }
     //Compare sent in password with found user password hash
     const passwordMatch = bcrypt.compareSync(password, user.password);
@@ -91,9 +89,21 @@ const logout = async (req, res) => {
   }
 };
 
+const getLatestSnips = async (req, res) => {
+  try {
+    console.log(req.params.username);
+    const latestSnips = await User.findOne({ username: req.params.username });
+    res.status(200).json(latestSnips);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   signup,
   login,
   checkAuth,
+  getLatestSnips,
   logout,
 };
