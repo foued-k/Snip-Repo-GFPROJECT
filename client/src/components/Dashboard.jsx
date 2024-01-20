@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import NavbarDashboard from "./NavbarDashboard";
 import { Link } from "react-router-dom";
 
@@ -22,15 +22,16 @@ function Dashboard() {
     return (
         <div>
 
-            <NavbarDashboard/>
+            <NavbarDashboard />
 
             <div className="container dashboard">
                 <div className="row">
                     <div className="col-4 dashboard-menu">
-                        <p>Add new snippets</p>
+                        <p><Link to={`/newsnippet`} className="links">Add new snippets</Link></p>
                         <p><Link to={`/mysnippets`} className="links">My snippets</Link></p>
                     </div>
 
+                    {/* rendering of the latest snippets */}
                     <div className="col">
                         <div className="latestSnippets">
                             <h4>My latest snippets</h4>
