@@ -42,6 +42,7 @@ const getOneSnip = async (req, res) => {
   }
 };
 
+
 const updateSnip = async (req, res) => {
     const {title, description, body, language, labels} = req.body
     const snip = await Snip.findOneAndUpdate({_id: req.params.id, user:req.user._id}, {title, description, body, language, labels}, {new:true})

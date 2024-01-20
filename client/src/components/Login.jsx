@@ -24,7 +24,7 @@ function Login() {
         { username, password },
         { withCredentials: true }
       );
-      navigate("/dashboard");
+      navigate("/dashboard", { state: { username } });
     } catch (err) {
       setError(err.response.data.msg);
       setShow(true);
