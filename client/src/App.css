@@ -2,6 +2,10 @@
   --main-color: #1E1E1E;
   --secondary-color: #FF725E;
   --third-light-color: #FBFBFB;  
+  --logo-font: 'Source Code Pro', monospace;
+  --body:'Open Sans', sans-serif;
+
+
 }
 
 *{
@@ -16,6 +20,20 @@ html, body, #root {
 
 body {
   background-color: var(--main-color);
+  font-family: var(--body);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.logo{
+font-family: var(--logo-font);
+}
+
+.subtitle {
+  font-style: italic;
+  margin: 0 0 10px;
 }
 
 #main-nav-title > div {
@@ -29,6 +47,19 @@ body {
   font-size: 1.5rem;
 }
 
+.nav-bar{
+  padding: 5px;
+  padding-left: 1%;
+  display: flex;
+}
+
+.nav-container{
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+
 .logout-btn {
   background-color: var(--secondary-color);
   color: whitesmoke;
@@ -39,18 +70,37 @@ body {
   background-color: #fe5c47;
 }
 
+.white{
+  color: var(--third-light-color)
+}
+
 .signup-bodytext {
   color: aqua;
   padding-right: 30px;
   max-width: 90%;
+  font-size: 1.2rem;
 }
 
-.img {
-  max-width: 60%;
+
+.img-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.img1 {
+  max-width: 80%;
+  margin-top: -100px;
+  margin-left: 120px;
+}
+
+.img2 {
+  max-width: 100%;
+  margin-top: -140px;
+  margin-left: 60;
 }
 
 .signup-container {
-  padding: 10px;
+  padding: 5px;
   margin: 50px auto;
 }
 
@@ -59,6 +109,7 @@ body {
 }
 
 .signup-form {
+  margin-top: 80px;
   padding: 30px 50px;
   background-color: lightgray;
   border-radius: 8px;
@@ -76,6 +127,7 @@ body {
 .form-btn {
   display: flex;
   justify-content: flex-end;
+  padding: 5px;
 }
 
 .add-code-title {
@@ -114,10 +166,20 @@ body {
 .homepage-account-link {
   text-decoration: none;
   font-weight: bold;
+  margin-left: 5px;
+}
+
+.alert{
+  color: #9b2c39;
+  padding-top: -3px;
 }
 
 .card-text, .homepage-account-link {
   color: var(--secondary-color);
+}
+
+.negative-margin{
+  margin-top: -130px;
 }
 
 .dashboard, .mySnippets {
@@ -129,12 +191,16 @@ body {
   min-height: 100vh;
 }
 
-.dashboard .row  div{
-  padding: 30px;
-}
+
 
 .dashboard-menu {
   text-align: center;
+  padding: 40px 0 0 0;
+}
+
+.dashboard-menu button{
+  border-radius: 0;
+
 }
 
 .latestSnippets, .dashboard-menu {

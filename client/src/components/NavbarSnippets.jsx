@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 
 function NavbarSnippets() {
     return (
-        <Navbar bg="light" data-bs-theme="light" className="justify-content-between">
+        <Navbar bg="light" data-bs-theme="light" className="justify-content">
             <Container>
-                <Navbar.Brand className="text-center nav-brand"><Link to={'/dashboard'} className="links">Dashboard</Link></Navbar.Brand>
-                <h4>SnipRepo</h4>
+                <Navbar.Brand className="text-center nav-brand col-4"><Link to={'/dashboard'} className="links">Dashboard</Link></Navbar.Brand>
+                <h4 className="logo">SnipRepo</h4>
                 <Button className="logout-btn">Logout</Button>
             </Container>
         </Navbar>
