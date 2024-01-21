@@ -5,26 +5,36 @@ import { Link, useLocation } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import { Button, ButtonGroup } from "react-bootstrap";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 function Dashboard() {
   const [snippets, setSnippets] = useState([]);
   const location = useLocation();
-
+  const [cookies] = useCookies(["token"]);
   const { username } = location.state
+  const [user] = useCookies(["user"])
+  const token = JSON.stringify(cookies.token);
+  console.log(document.cookie.token)
 
+  console.log(token)
+  function getSnippets() {
+    try {
+      axios.get("http://localhost:3020/snips", {
+        withCredentials: true
+      })
+        .then(({ data }) => {
+          setSnippets(data.snips);
+          console.log(data.snips);
+        })
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  // function getSnippets() {
-  //     try {
-  //         console.log("weight requested front")
-  //         axios.get("http://localhost:3020/snippets")
-  //             .then(({ data }) => {
-  //                 setSnippets(data);
-  //                 console.log(snippets);
-  //             })
-  //     } catch (error) {
-  //         console.log(error);
-  //     }
-  // }
+  useEffect(() => {
+    getSnippets();
+  }, []);
+
 
   return (
     <div>
@@ -51,17 +61,18 @@ function Dashboard() {
           <div className="col">
             <div className="latestSnippets">
               <h4>My latest snippets</h4>
-              {/* <div className="d-flex gap-5">
+              <div className="d-flex gap-5">
                 {snippets.map((e) => {
-                    return (
-                        <div key={e._id}>
-                            <h3>{e.title}</h3>
-                            <p>{e.description}</p>
-                            <p>{e.language}</p>
-                        </div>
-                    )}
+                  return (
+                    <div key={e._id}>
+                      <h3>{e.title}</h3>
+                      <p>{e.description}</p>
+                      <p>{e.language}</p>
+                    </div>
+                  )
+                }
                 )}
-            </div> */}
+              </div>
             </div>
           </div>
         </div>
