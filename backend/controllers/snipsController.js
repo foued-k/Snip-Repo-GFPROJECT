@@ -12,7 +12,7 @@ const createSnip = async (req, res) => {
       labels,
       user: req.user._id,
     });
-    res.json({ snip });
+    res.status(200).send({ msg: "Snip created successfully" });
   } catch (err) {
     console.log(err);
     res.sendStatus(401);

@@ -59,6 +59,16 @@ font-family: var(--logo-font);
   justify-content: space-between;
 }
 
+.h3{
+  color: var(--main-color);
+  font-size: 1rem;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.description{
+  color: var(--third-light-color);
+}
 
 .logout-btn {
   background-color: var(--secondary-color);
@@ -182,19 +192,14 @@ font-family: var(--logo-font);
   margin-top: -130px;
 }
 
-.dashboard, .mySnippets {
-  min-width: 100%;
-  min-height: 100%;
-}
 
 .dashboard .row {
   min-height: 100vh;
 }
 
-
-
 .dashboard-menu {
-  text-align: center;
+
+  text-align: left;
   padding: 40px 0 0 0;
 }
 
@@ -209,5 +214,28 @@ font-family: var(--logo-font);
 }
 
 .latestSnippets {
+  height: 50px;
+  background-color: red;
+}
+
+.latest {
+  background-color: white;
+  border-radius: 8px;
+  height: 240px;
+  width: 95%;
+  margin-top: 2%;
+  margin-inline: auto;
+}
+
+.snippetPreview{
+  margin: 1%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.snippet-form{
+  margin-top: 80px;
+  padding: 30px 50px;
+  background-color: lightgray;
   border-radius: 8px;
 }
