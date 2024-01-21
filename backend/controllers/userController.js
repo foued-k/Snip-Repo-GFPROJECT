@@ -11,16 +11,16 @@ const signup = async (req, res) => {
     if (!username || !password) {
       return res.status(400).json({ msg: "Please enter all the fields" });
     }
-    if (password.length < 6) {
-      return res
-        .status(400)
-        .json({ msg: "Password should be at least 6 characters" });
-    }
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res
         .status(400)
         .json({ msg: "User with the same username already exists" });
+    }
+    if (password.length < 6) {
+      return res
+        .status(400)
+        .json({ msg: "Password should be at least 6 characters" });
     }
     //Hash the password
     const hashedPassword = bcrypt.hashSync(password, 8);
@@ -100,10 +100,24 @@ const getLatestSnips = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const user = await User.findOne({_id: req.params.id});
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({user});
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   signup,
   login,
   checkAuth,
   getLatestSnips,
   logout,
+  getUser
 };

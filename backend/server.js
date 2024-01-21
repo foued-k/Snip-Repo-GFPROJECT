@@ -23,6 +23,7 @@ app.post("/signup", userController.signup);
 app.post("/login", userController.login);
 app.get("/checkAuth", requireAuth, userController.checkAuth);
 app.get("/logout", userController.logout);
+app.get("/user/:id", userController.getUser);
 
 //creating snips paths
 app.get("/snips", requireAuth, snipsController.getSnips);
