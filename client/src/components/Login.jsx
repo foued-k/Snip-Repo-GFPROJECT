@@ -9,21 +9,26 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { useNavigate, Link } from "react-router-dom";
 import { Alert } from "react-bootstrap";
+import { useCookies } from "react-cookie";
 
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [cookies, setCookie] = useCookies(["token"]);
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
 
   async function login() {
     try {
-      await axios.post(
+     const response = await axios.post(
         "http://localhost:3020/login",
         { username, password },
         { withCredentials: true }
       );
+
+      const token = response.data.token;
+      setCookie("token", token, { path: "/" });
       navigate("/dashboard", { state: { username } });
     } catch (err) {
       setError(err.response.data.msg);
