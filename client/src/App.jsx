@@ -22,7 +22,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/newsnippet" element={<AddSnippet />} />
-        <Route path="/MySnippets"  element={<MySnippets />} />
+        <Route path="/mysnippets"  element={<MySnippets />} />
       </Routes>
     </BrowserRouter>
   );
