@@ -42,11 +42,39 @@ const getOneSnip = async (req, res) => {
   }
 };
 
+const searchSnips = async (req, res) => {
+  try {
+    const searchQuery = req.query.term;
+    let query = { user: req.user._id };
+    if (searchQuery) {
+      query.$or = [
+        { title: { $exists: true, $regex: new RegExp(searchQuery, "i") } },
+        {
+          description: { $exists: true, $regex: new RegExp(searchQuery, "i") },
+        },
+        {
+          language: { $exists: true, $regex: new RegExp(searchQuery, "i") },
+        },
+        { body: { $exists: true, $regex: new RegExp(searchQuery, "i") } },
+      ];
+    }
+    
+    const snips = await Snip.find(query);
+    res.json({ snips });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(401);
+  }
+};
 
 const updateSnip = async (req, res) => {
-    const {title, description, body, language, labels} = req.body
-    const snip = await Snip.findOneAndUpdate({_id: req.params.id, user:req.user._id}, {title, description, body, language, labels}, {new:true})
-    res.json({snip})
+  const { title, description, body, language, labels } = req.body;
+  const snip = await Snip.findOneAndUpdate(
+    { _id: req.params.id, user: req.user._id },
+    { title, description, body, language, labels },
+    { new: true }
+  );
+  res.json({ snip });
 };
 
 const deleteSnip = async (req, res) => {
@@ -63,6 +91,7 @@ module.exports = {
   createSnip,
   getSnips,
   getOneSnip,
+  searchSnips,
   updateSnip,
   deleteSnip,
 };
