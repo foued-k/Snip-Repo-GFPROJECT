@@ -1,14 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
 import { Card, CardFooter } from "react-bootstrap";
 
-function SnipCard({ e, fetchData, showAlert }) {
-  
+function SnippetsCard({ e, getSnippets, handleDeleteAlert }) {
+
 const deleteSnippet = async(id) => {
 await axios.delete(`http://localhost:3020/snips/${id}`, {withCredentials:true})
 console.log('deleted');
-fetchData()
-showAlert()
+getSnippets()
+handleDeleteAlert()
 }
 
 
@@ -81,4 +80,4 @@ showAlert()
   );
 }
 
-export default SnipCard;
+export default SnippetsCard;

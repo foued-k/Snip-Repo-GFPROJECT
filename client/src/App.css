@@ -194,8 +194,35 @@ font-size: 1.5rem;
 }
 
 .links {
+  display: block;
   text-decoration: none;
   color: black;
+  font-family: var(--subtitle);
+}
+
+.links:hover{
+  background-color: #edf0f3;
+}
+
+.links-snippets {
+  display: block;
+  text-decoration: none;
+  background-color: #edf0f3;
+  color: black;
+  font-family: var(--subtitle);
+  padding: 2px
+}
+
+.links-snippets:hover{
+  background-color: #d8dfe6;
+}
+
+
+.search-warning {
+  color: #f86e7e;
+  font-style: italic;
+  font-weight: lighter;
+  padding-left: 20px;
 }
 
 .homepage-account-link {
@@ -246,14 +273,41 @@ font-size: 1.5rem;
 .snippetPreview{
   margin: 1%;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: auto;
+  border-radius: 8px;
+  border: #72787e solid 2px;
+  position: relative;
+}
+
+.clipboardIcon{
+  background-color: var(--main-color);
+  padding: 10px;
+  position: absolute;
+  top:0;
+  right: 0;
+  cursor: pointer;
 }
 
 .snippet-form{
   margin-top: 80px;
   padding: 30px 50px;
-  background-color: lightgray;
+ color:var(--third-light-color);
   border-radius: 8px;
+  border: #72787e solid 2px;
+}
+
+.snippet-inputs {
+  background-color: #252a2e;
+  color: var(--third-light-color);
+}
+
+.snippet-inputs:focus {
+  background-color: #252a2e;
+  color: var(--third-light-color);
+}
+
+.snippet-icons {
+  text-align: right;
 }
 
 .sidebar {
@@ -300,6 +354,7 @@ font-size: 1.5rem;
 
 
 .card{
+  min-width: 200px;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -325,6 +380,42 @@ font-size: 1.5rem;
   bottom: 10px;
 }
 
+.snippet-overtitle{
+  color:  #72787e;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-family: var(--subtitle);
+ 
+}
+
+.snippet{
+  height: auto;
+}
+
+.success{
+  color: green
+}
+
+.snippet-title {
+  font-size: 1.2rem;
+  font-family: var(--logo-font);
+  color: var(--third-light-color);
+  font-weight: 900;
+}
+
+.snippet-description {
+  color: var(--third-light-color);
+  font-size: 1rem;
+}
+
+.snippet-language {
+  color: var(--secondary-color);
+  font-family: var(--subtitle);
+  position: absolute;
+  bottom: 10px;
+}
+
+
 .sidebar-links {
   text-transform: uppercase;
   font-family: var(--subtitle);
@@ -334,5 +425,17 @@ font-size: 1.5rem;
 @media (max-width: 990px) {
   .sidebar {
     height: auto; /* Set the height to auto for medium and smaller screens */
+  }
+}
+
+@media (max-width: 1500px) {
+  .card{
+    height: 300px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .card{
+    height: 250px;
   }
 }
