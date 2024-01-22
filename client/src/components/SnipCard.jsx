@@ -2,9 +2,11 @@ import axios from "axios";
 import { useState } from "react";
 import { Card, CardFooter } from "react-bootstrap";
 import ConfirmationModal from "./ConfirmationModal";
+import ViewCard from "./ViewCard";
 
 function SnipCard({ e, fetchData, showAlert }) {
   const [show, setShow] = useState(false);
+  const [view, setView] = useState(false)
   const handleClose = () => setShow(false);
   
 const deleteSnippet = async(id) => {
@@ -15,9 +17,15 @@ handleClose()
 showAlert()
 }
 
+const handleView = () => {
+setView(true)
+}
+
 
   return (
     <>
+    
+    {view && (<div><ViewCard e={e} handleClose={handleClose}/></div>)}
     {show && (<ConfirmationModal e={e} show={show} handleClose={handleClose} deleteSnippet={deleteSnippet}/>)}
     <Card className="text-left card" bg="dark" border="secondary">
       <Card.Header
@@ -58,7 +66,7 @@ showAlert()
         >
           <div>
             <svg
-            onClick={() => console.log('clicked')}
+            onClick={handleView}
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
