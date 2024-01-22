@@ -3,12 +3,23 @@ import axios from "axios";
 import NavbarSnippets from "./NavbarSnippets";
 import Card from 'react-bootstrap/Card';
 import { useCookies } from "react-cookie";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function MySnippets() {
     const [snippets, setSnippets] = useState([]);
     const [cookies] = useCookies(["token"]);
     const token = cookies.token;
-
+    const [show, setShow] = useState(false);
+    const [snipId, setSnipId] = useState("");
+    
+    const handleClose = () => setShow(false);
+    
+    // show delete confirmation box
+    const handleDeleteAlert = (id) => {
+        setSnipId(id);
+        setShow(true);
+    } 
     useEffect(() => {
         if (token) {
             getSnippets()
@@ -26,6 +37,7 @@ function MySnippets() {
             })
                 .then(({ data }) => {
                     setSnippets(data.snips);
+                    setSnipId("");
                 })
         } catch (error) {
             console.log(error);
@@ -38,6 +50,7 @@ function MySnippets() {
             withCredentials: true
         });
         getSnippets();
+        setShow(false);
     }
 
     return (
@@ -54,7 +67,7 @@ function MySnippets() {
                         return (
                             <Card key={e._id}>
                                 <Card.Header>
-                                    <img src={require('../images/trash.png')} className="img justify-content-end" alt={""} onClick={() => deleteSnippet(e._id)} />
+                                    <img src={require('../images/trash.png')} className="img justify-content-end" alt={""} onClick={() => handleDeleteAlert(e._id)}/>
                                 </Card.Header>
                                 <Card.Body>
                                     <Card.Title>{e.title}</Card.Title>
@@ -66,6 +79,22 @@ function MySnippets() {
                         )
                     }
                     )}
+
+                    <Modal show={show} onHide={handleClose} animation={false}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Delete a snip alert</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Are you sure you want to delete this snip?</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="primary" onClick={() => deleteSnippet(snipId)}>
+                                Yes
+                            </Button>
+                            <Button variant="secondary" onClick={handleClose}>
+                                No
+                            </Button>
+
+                        </Modal.Footer>
+                    </Modal>
 
                     <div>
 
