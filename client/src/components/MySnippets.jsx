@@ -53,6 +53,7 @@ function MySnippets() {
     }
   }
 
+
   //  delete a single snippet and return the updated collection
   // const deleteSnippet = async (id) => {
   //   await axios.delete(`http://localhost:3020/snips/${id}`, {
@@ -94,20 +95,19 @@ function MySnippets() {
           ))}
         </Row>
         {/* <Modal show={show} onHide={handleClose} animation={false}>
-                          <Modal.Header closeButton>
-                              <Modal.Title>Delete a snip alert</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body>Are you sure you want to delete this snip?</Modal.Body>
-                          <Modal.Footer>
-                              <Button variant="primary" onClick={() => deleteSnippet(snipId)}>
-                                  Yes
-                              </Button>
-                              <Button variant="secondary" onClick={handleClose}>
-                                  No
-                              </Button>
-  
-                          </Modal.Footer>
-                      </Modal>  */}
+          <Modal.Header closeButton>
+            <Modal.Title>Delete a snip alert</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete this snip?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => deleteConfirmation(snipId)}>
+              Yes
+            </Button>
+            <Button variant="secondary" onClick={handleClose}>
+              No
+            </Button>
+          </Modal.Footer>
+        </Modal> */}
       </Container>
     </>
   );
