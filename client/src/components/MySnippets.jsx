@@ -12,14 +12,14 @@ function MySnippets() {
     const token = cookies.token;
     const [show, setShow] = useState(false);
     const [snipId, setSnipId] = useState("");
-    
+
     const handleClose = () => setShow(false);
-    
+
     // show delete confirmation box
     const handleDeleteAlert = (id) => {
         setSnipId(id);
         setShow(true);
-    } 
+    }
     useEffect(() => {
         if (token) {
             getSnippets()
@@ -57,17 +57,19 @@ function MySnippets() {
         <div>
             <NavbarSnippets />
 
-            <div className="container mySnippets">
+            <div className="container mySnippets d-flex flex-wrap">
 
-                <h3>My snippets</h3>
+                <div className="mySnippetsTitle">
+                    <h3>My snippets</h3>
+                </div>
 
-                <div className="d-flex gap-5">
+                <div className="d-flex flex-wrap gap-4 mySnippetsList">
 
                     {snippets.map((e) => {
                         return (
                             <Card key={e._id}>
                                 <Card.Header>
-                                    <img src={require('../images/trash.png')} className="img justify-content-end" alt={""} onClick={() => handleDeleteAlert(e._id)}/>
+                                    <img src={require('../images/trash.png')} className="img justify-content-end" alt={""} onClick={() => handleDeleteAlert(e._id)} />
                                 </Card.Header>
                                 <Card.Body>
                                     <Card.Title>{e.title}</Card.Title>
