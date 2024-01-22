@@ -2,12 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import { Card, CardFooter } from "react-bootstrap";
 
-function SnipCard({ e, fetchData, showAlert }) {
+function SnipCard({ e, handleReSearch, showAlert , fetchData}) {
   
 const deleteSnippet = async(id) => {
 await axios.delete(`http://localhost:3020/snips/${id}`, {withCredentials:true})
 console.log('deleted');
 fetchData()
+handleReSearch()
 showAlert()
 }
 
