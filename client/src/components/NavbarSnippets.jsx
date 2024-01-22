@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -18,19 +18,19 @@ function NavbarSnippets() {
       <Container fluid>
         <Navbar.Brand className="logo ms-2">&lt;SnipRepo&gt;</Navbar.Brand>
         <Navbar.Brand>
-          <Link to={"/dashboard"} className="links-snippets">
+          <a href={"/dashboard"} className="links-snippets">
             Dashboard
-          </Link>
+          </a>
         </Navbar.Brand>
         <Navbar.Brand>
-          <Link to={"/mysnippets"} className="links-snippets">
+          <a href={"/mysnippets"} className="links-snippets">
             My Snippets
-          </Link>
+          </a>
         </Navbar.Brand>
         <Navbar.Brand>
-          <Link to={"/newsnippet"} className="links-snippets">
+        <a href={"/newsnippet"} className="links-snippets">
             Add new snippet
-          </Link>
+          </a>
         </Navbar.Brand>
         <Navbar.Collapse className="logo justify-content-center ms-5">
           {/* <Form className="d-flex" onSubmit={handleSearch}>
