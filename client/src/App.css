@@ -32,7 +32,7 @@ body {
 
 .logo{
 font-family: var(--logo-font);
-font-weight: black;
+font-weight: 900;
 font-size: 1.5rem;
 }
 
@@ -160,21 +160,37 @@ font-size: 1.5rem;
 .mySnippets .card {
   background-color: var(--main-color);
   border: 1px solid var(--third-light-color);
+  width: 20%;
 }
 
 .mySnippets {
   padding: 30px 50px;
+  /* display: flex;
+  flex-wrap: wrap; */
 }
 
-.mySnippets > h3 {
+.mySnippetsTitle {
+  flex-basis: 100%;
   margin-bottom: 30px;
 }
 
+.mySnippetsList{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-auto-rows: 20px;
+  grid-gap: 5px;
+}
 
 .card-header {
   color: var(--third-light-color);
   display: flex;
   justify-content: flex-end;
+}
+
+.card-body {
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
 }
 
 .links {
@@ -294,6 +310,7 @@ font-size: 1.5rem;
 .card-title {
   font-family: var(--logo-font);
   color: var(--third-light-color);
+  font-weight: 900;
 }
 
 .card-description {
