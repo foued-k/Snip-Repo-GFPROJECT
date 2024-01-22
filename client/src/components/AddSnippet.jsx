@@ -39,11 +39,12 @@ console.log(res.data.msg);
       <Container fluid className="preview">
         <Row>
           <Col lg={7}>
+        {formSubmitted && (
             <div className="snippetPreview">
               <SyntaxHighlighter language="javascript" style={atomOneDark}>
                 {snip.body}
               </SyntaxHighlighter>
-            </div>
+            </div>) }
           </Col>
           <Col lg={4}>
             {!formSubmitted ? (
