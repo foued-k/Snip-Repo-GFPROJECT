@@ -32,7 +32,7 @@ body {
 
 .logo{
 font-family: var(--logo-font);
-font-weight: black;
+font-weight: 900;
 font-size: 1.5rem;
 }
 
@@ -310,6 +310,7 @@ font-size: 1.5rem;
 .card-title {
   font-family: var(--logo-font);
   color: var(--third-light-color);
+  font-weight: 900;
 }
 
 .card-description {
