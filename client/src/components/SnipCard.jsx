@@ -4,9 +4,11 @@ import { Card, CardFooter } from "react-bootstrap";
 import ConfirmationModal from "./ConfirmationModal";
 import SnipPreviewModal from "./SnipPreviewModal";
 
+
 function SnipCard({ e, fetchData, showAlert }) {
   //handle the state of snippet delete confirmation modal
   const [show, setShow] = useState(false);
+  const [view, setView] = useState(false)
   const handleClose = () => setShow(false);
   // handle the state of snippet preview modal
   const [preview, setPreview] = useState(false);
@@ -21,12 +23,21 @@ function SnipCard({ e, fetchData, showAlert }) {
     showAlert()
   }
 
+const handleView = () => {
+setView(true)
+}
+
 
   return (
     <>
+
       {show && (<ConfirmationModal e={e} show={show} handleClose={handleClose} deleteSnippet={deleteSnippet} />)}
       {preview && (<SnipPreviewModal e={e} preview={preview} handlePreview={handlePreview} />)}
       <Card className="text-left card" bg="dark" border="secondary"
+
+    
+      <Card.Header
+
         style={{
           marginBottom: "8px",
         }}>
@@ -38,6 +49,7 @@ function SnipCard({ e, fetchData, showAlert }) {
           as="h5"
           className="text-center"
         >
+
           <Card.Text
             style={{
               color: "white",
@@ -94,6 +106,35 @@ function SnipCard({ e, fetchData, showAlert }) {
           </Card.Link>
         </CardFooter>
       </Card>
+          <div>
+            <svg
+            onClick={handleView}
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="white"
+              className="bi me-3 bi-eye-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+            </svg>
+            <svg
+             onClick={() => setShow(true)}
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="white"
+              className="bi bi-trash-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+            </svg>
+          </div>
+        </Card.Link>
+      </CardFooter>
+    </Card>
+
     </>
   );
 }
