@@ -9,10 +9,13 @@ import axios from "axios";
 function NavbarSnippets() {
   const navigate = useNavigate();
 
-  const logout = async () => {
-    await axios.get("http://localhost:3020/logout");
-    navigate("/login");
-  };
+  const logout = async() => {
+    const res = await axios.get("http://localhost:3020/logout")
+    console.log(res.data);
+    navigate("/login")
+  }
+
+
   return (
     <Navbar bg="light" data-bs-theme="light" className="d-flex ">
       <Container fluid>
@@ -33,26 +36,8 @@ function NavbarSnippets() {
           </a>
         </Navbar.Brand>
         <Navbar.Collapse className="logo justify-content-center ms-5">
-          {/* <Form className="d-flex" onSubmit={handleSearch}>
-            <InputGroup>
-              <Form.Control
-                type="search"
-                placeholder="search"
-                value={search}
-                onChange={captureSearch}
-                aria-label="Search"
-              />
-              <Button variant="dark" onClick={handleSearch}>
-                Search
-              </Button>
-            </InputGroup>
-          </Form> */}
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-          {/* <Form className="d-flex align-items-center">
-            <span className="me-2">
-              <span className="hello">Hello</span>, <b>{username}</b>
-            </span> */}
           <Button
             className="logout-btn"
             onClick={logout}

@@ -10,6 +10,7 @@ import { Alert } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import AddForm from "./AddForm";
 import SetSnippet from "./SetSnippet";
+import UpdateForm from "./UpdateForm";
 
 function AddSnippet() {
   const [snip, setSnip] = useState({
@@ -20,8 +21,8 @@ function AddSnippet() {
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [copied, setCopied] = useState(false)
-  const [editMode, setEditMode] = useState(false)
+  const [copied, setCopied] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   const languages = SyntaxHighlighter.supportedLanguages;
 
@@ -34,25 +35,27 @@ function AddSnippet() {
     e.preventDefault();
     setFormSubmitted(true);
     setSuccess(true);
-    editMode ? await axios.put(`http://localhost:3020/snips/${snip._id}`, snip, {
-      withCredentials: true,
-    }) : await axios.post("http://localhost:3020/snips", snip, {
-      withCredentials: true,
-    });
+    editMode
+      ? await axios.put(`http://localhost:3020/snips/${snip._id}`, snip, {
+          withCredentials: true,
+        })
+      : await axios.post("http://localhost:3020/snips", snip, {
+          withCredentials: true,
+        });
     setTimeout(() => {
       setSuccess(false);
-      setEditMode(false)
+      setEditMode(false);
     }, 2000);
   };
 
   const handleCopied = () => {
-    setCopied(true)
+    setCopied(true);
     setTimeout(() => {
       setCopied(false);
     }, 2000);
-  }
+  };
 
-  const handleEdit = (id) => {
+  const handleEdit = () => {
     setEditMode(true);
   };
 
@@ -63,7 +66,6 @@ function AddSnippet() {
       <Container fluid className="preview">
         <Row>
           <Col lg={7}>
-  
             {formSubmitted && (
               <div className="snippetPreview">
                 <CopyToClipboard
@@ -98,14 +100,14 @@ function AddSnippet() {
                   width="16"
                   height="16"
                   fill="green"
-                  class="bi bi-check"
+                  className="bi bi-check"
                   viewBox="0 0 16 16"
                 >
                   <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
                 </svg>
               </Alert>
             )}
-                    {copied && (
+            {copied && (
               <Alert variant="success" className="mt-3 success">
                 Snippet copied!
                 <svg
@@ -113,7 +115,7 @@ function AddSnippet() {
                   width="16"
                   height="16"
                   fill="green"
-                  class="bi bi-check"
+                  className="bi bi-check"
                   viewBox="0 0 16 16"
                 >
                   <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
@@ -121,10 +123,15 @@ function AddSnippet() {
               </Alert>
             )}
             {!formSubmitted && !editMode ? (
-             <AddForm snip={snip} languages={languages} handleSubmit={handleSubmit} handleSnip={handleSnip}/>
-            ) : (
-             <SetSnippet snip={snip} handleEdit={handleEdit}/>
-            )}
+  <AddForm
+    snip={snip}
+    languages={languages}
+    handleSubmit={handleSubmit}
+    handleSnip={handleSnip}
+  />
+) : (
+  <>{!editMode ? <SetSnippet snip={snip} handleEdit={handleEdit} /> : <UpdateForm editedSnippet={snip} handleEditChange={handleSnip} handleUpdateSnippet={handleSubmit} editMode={editMode}/>}</>
+)}
           </Col>
         </Row>
       </Container>

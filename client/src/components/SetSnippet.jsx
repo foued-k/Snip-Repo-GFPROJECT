@@ -59,7 +59,7 @@ function SetSnippet({ snip, handleEdit }) {
         <Card.Body>
           <div className="snippet-icons">
             <svg
-              onClick={() => handleEdit(snip._id)}
+              onClick={() => handleEdit()}
               xmlns="http://www.w3.org/2000/svg"
               width="22"
               height="22"
