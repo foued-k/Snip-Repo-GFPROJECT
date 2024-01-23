@@ -2,11 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import { Card, CardFooter } from "react-bootstrap";
 import ConfirmationModal from "./ConfirmationModal";
+import SnipPreviewModal from "./SnipPreviewModal";
 
 function SnipCard({ e, handleReSearch, showAlert , fetchData}) {
+  //handle the state of snippet delete confirmation modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  // handle the state of snippet preview modal
+  const [preview, setPreview] = useState(false);
+  const handlePreview = () => setPreview(false);
   
+//handle delete a snippet
 const deleteSnippet = async(id) => {
 await axios.delete(`http://localhost:3020/snips/${id}`, {withCredentials:true})
 console.log('deleted');
@@ -20,6 +26,7 @@ showAlert()
   return (
     <>
     {show && (<ConfirmationModal e={e} show={show} handleClose={handleClose} deleteSnippet={deleteSnippet}/>)}
+    {preview && (<SnipPreviewModal e={e} preview={preview} handlePreview={handlePreview}/>)}
     <Card className="text-left card" bg="dark" border="secondary">
       <Card.Header
         style={{
@@ -59,7 +66,7 @@ showAlert()
         >
           <div>
             <svg
-            onClick={() => console.log('clicked')}
+            onClick={() => setPreview(true)}
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"

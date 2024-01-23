@@ -15,20 +15,22 @@ function Dashboard() {
   const [searchResults, setSearchResults] = useState([]);
   const [warn, setWarn] = useState(false);
   const [show, setShow] = useState(false);
-  let latestSnips;
+  const allSnipsReversed = [...snippets].reverse();
+  let latestSnips = allSnipsReversed.slice(0, 4);
 
-  if ([snippets].length > 4) {
-    latestSnips = [...snippets]
-      .slice([...snippets].length - 4, [...snippets].length)
-      .reverse();
-  } else {
-    latestSnips = [...snippets].reverse();
-  }
-
+  // if ([snippets].length > 4) {
+  //   latestSnips = [...snippets]
+  //     .slice([...snippets].length - 4, [...snippets].length)
+  //     .reverse();
+  // } else {
+  //   latestSnips = [...snippets].reverse();
+  // }
+  
   useEffect(() => {
     fetchData();
   }, []);
 
+  // fetching all the user's snippets from the db
   async function fetchData() {
     try {
       const response = await axios.get("http://localhost:3020/snips", {
@@ -37,7 +39,6 @@ function Dashboard() {
       if (response.data.snips && response.data.snips.length > 0) {
         const user = response.data.snips[0].user;
         setSnippets(response.data.snips);
-
         if (user) {
           getUser(user);
         }
