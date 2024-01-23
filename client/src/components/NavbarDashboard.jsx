@@ -7,12 +7,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { InputGroup } from "react-bootstrap";
 
-function NavbarDashboard({username, search, captureSearch, handleSearch}) {
+function NavbarDashboard({username, search, captureSearch, handleSearch, searchResults}) {
 const navigate = useNavigate()
 
 
 const logout = async() => {
-  await axios.get("http://localhost:3020/logout")
+  const res = await axios.get("http://localhost:3020/logout")
+  console.log(res.data);
   navigate("/login")
 }
 

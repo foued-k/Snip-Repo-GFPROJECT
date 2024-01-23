@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import NavbarDashboard from "./NavbarDashboard";
-import { Link } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
-import { Alert, Col, ListGroup, ListGroupItem, Row } from "react-bootstrap";
+import { Alert, Col, Row } from "react-bootstrap";
 import axios from "axios";
 import SnipCard from "./SnipCard";
 import ResultSnipCard from "./ResultSnipCard";
@@ -15,17 +14,10 @@ function Dashboard() {
   const [searchResults, setSearchResults] = useState([]);
   const [warn, setWarn] = useState(false);
   const [show, setShow] = useState(false);
+  const [emptySearch, setEmptySearch] = useState(false);
   const allSnipsReversed = [...snippets].reverse();
   let latestSnips = allSnipsReversed.slice(0, 4);
 
-  // if ([snippets].length > 4) {
-  //   latestSnips = [...snippets]
-  //     .slice([...snippets].length - 4, [...snippets].length)
-  //     .reverse();
-  // } else {
-  //   latestSnips = [...snippets].reverse();
-  // }
-  
   useEffect(() => {
     fetchData();
   }, []);
@@ -64,6 +56,7 @@ function Dashboard() {
 
   const captureSearch = (e) => {
     setWarn(false);
+    setEmptySearch(false);
     setSearch(e.target.value);
   };
 
@@ -79,6 +72,11 @@ function Dashboard() {
       { withCredentials: true }
     );
     setSearchResults(res.data.snips);
+    if (res.data.snips.length === 0) {
+      setEmptySearch(true);
+    } else {
+      setEmptySearch(false);
+    }
   };
 
   const showAlert = () => {
@@ -108,6 +106,7 @@ function Dashboard() {
         search={search}
         captureSearch={captureSearch}
         handleSearch={handleSearch}
+        searchResults={searchResults}
       />
       <Container fluid>
         <Row>
@@ -130,6 +129,14 @@ function Dashboard() {
                       />
                     </Col>
                   ))}
+                </div>
+              </div>
+            )}
+            {emptySearch && (
+              <div className="results">
+                <h3 className="h3 results-title">Search results</h3>
+                <div className="row search-warning">
+                  Search term wasn't found
                 </div>
               </div>
             )}

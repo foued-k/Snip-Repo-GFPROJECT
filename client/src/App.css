@@ -356,7 +356,7 @@ font-size: 1.5rem;
 
 .card{
   min-width: 200px;
-  height: 200px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -429,6 +429,7 @@ font-size: 1.5rem;
   background-color: #343a40; 
   color: white; 
 }
+
 
 @media (max-width: 990px) {
   .sidebar {
