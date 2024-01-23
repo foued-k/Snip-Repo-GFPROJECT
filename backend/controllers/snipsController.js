@@ -42,6 +42,20 @@ const getOneSnip = async (req, res) => {
   }
 };
 
+
+const getSnipByTitle = async (req, res) => {
+  try {
+    const snip = await Snip.findOne({
+      title: req.params.title,
+      user: req.user._id,
+    });
+    res.json({ snip });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
+};
+
 const searchSnips = async (req, res) => {
   try {
     const searchQuery = req.query.term;
@@ -91,6 +105,7 @@ module.exports = {
   createSnip,
   getSnips,
   getOneSnip,
+  getSnipByTitle,
   searchSnips,
   updateSnip,
   deleteSnip,

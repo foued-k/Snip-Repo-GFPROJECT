@@ -36,7 +36,11 @@ function Login() {
     }
   }
 
-  console.log(error);
+  const handleLogin = async(e) => {
+    e.preventDefault()
+    await login()
+    navigate("/dashboard")
+  }
 
   return (
     <div>
@@ -101,7 +105,7 @@ function Login() {
                 </Alert>
               )}
               <div className="form-btn">
-                <Button variant="dark" onClick={login}>
+                <Button variant="dark" type="submit" onClick={(e) => handleLogin(e)}>
                   Log in
                 </Button>
               </div>

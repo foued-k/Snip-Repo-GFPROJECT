@@ -10,8 +10,8 @@ import { Alert, Col, Container, Row } from "react-bootstrap";
 
 function MySnippets() {
   const [snippets, setSnippets] = useState([]);
-  const [cookies] = useCookies(["token"]);
-  const token = cookies.token;
+  // const [cookies] = useCookies(["token"]);
+  // const token = cookies.token;
   const [show, setShow] = useState(false);
   const [snipId, setSnipId] = useState("");
 
@@ -29,12 +29,12 @@ function MySnippets() {
   };
 
   useEffect(() => {
-    if (token) {
+    // if (token) {
       getSnippets();
-    } else {
-      console.error("Token is missing");
-      return;
-    }
+    // } else {
+    //   console.error("Token is missing");
+    //   return;
+    // }
   }, []);
 
   // get all the snippets from the database and render the result
@@ -76,7 +76,7 @@ function MySnippets() {
                 width="16"
                 height="16"
                 fill="green"
-                class="bi bi-check"
+                className="bi bi-check"
                 viewBox="0 0 16 16"
               >
                 <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
@@ -94,20 +94,6 @@ function MySnippets() {
             </Col>
           ))}
         </Row>
-        {/* <Modal show={show} onHide={handleClose} animation={false}>
-          <Modal.Header closeButton>
-            <Modal.Title>Delete a snip alert</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Are you sure you want to delete this snip?</Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={() => deleteConfirmation(snipId)}>
-              Yes
-            </Button>
-            <Button variant="secondary" onClick={handleClose}>
-              No
-            </Button>
-          </Modal.Footer>
-        </Modal> */}
       </Container>
     </>
   );
