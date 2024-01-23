@@ -1,0 +1,11 @@
+.modal-content {
+    background-color: #343a40; 
+    color: white; 
+    font-family: 'Nanum Gothic Coding', monospace;
+  }
+
+  .yes-button:focus {
+    background-color: #ffa07a; 
+    border-color: #ffa07a; 
+  }
+  

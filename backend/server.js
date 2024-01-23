@@ -27,6 +27,7 @@ app.get("/user/:id", userController.getUser);
 
 //creating snips paths
 app.get("/snips", requireAuth, snipsController.getSnips);
+app.get("/snips/search", requireAuth, snipsController.searchSnips);
 app.get("/snips/:id", requireAuth, snipsController.getOneSnip);
 app.post("/snips", requireAuth, snipsController.createSnip);
 app.put("/snips/:id", requireAuth, snipsController.updateSnip);

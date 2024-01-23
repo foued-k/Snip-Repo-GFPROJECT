@@ -4,6 +4,7 @@
   --third-light-color: #FBFBFB;  
   --logo-font: 'Source Code Pro', monospace;
   --body:'Open Sans', sans-serif;
+  --subtitle: 'Nanum Gothic Coding', monospace;
 
 
 }
@@ -21,6 +22,8 @@ html, body, #root {
 body {
   background-color: var(--main-color);
   font-family: var(--body);
+  margin: 0;
+  padding: 0;
 }
 
 .full-width {
@@ -29,6 +32,12 @@ body {
 
 .logo{
 font-family: var(--logo-font);
+font-weight: 900;
+font-size: 1.5rem;
+}
+
+.hello {
+  font-family: var(--subtitle);
 }
 
 .subtitle {
@@ -185,8 +194,35 @@ font-family: var(--logo-font);
 }
 
 .links {
+  display: block;
   text-decoration: none;
   color: black;
+  font-family: var(--subtitle);
+}
+
+.links:hover{
+  background-color: #edf0f3;
+}
+
+.links-snippets {
+  display: block;
+  text-decoration: none;
+  background-color: #edf0f3;
+  color: black;
+  font-family: var(--subtitle);
+  padding: 2px
+}
+
+.links-snippets:hover{
+  background-color: #d8dfe6;
+}
+
+
+.search-warning {
+  color: #f86e7e;
+  font-style: italic;
+  font-weight: lighter;
+  padding-left: 20px;
 }
 
 .homepage-account-link {
@@ -209,10 +245,6 @@ font-family: var(--logo-font);
 }
 
 
-.dashboard .row {
-  min-height: 100vh;
-}
-
 .dashboard-menu {
 
   text-align: left;
@@ -229,11 +261,6 @@ font-family: var(--logo-font);
   color: black;
 }
 
-.latestSnippets {
-  height: 50px;
-  background-color: red;
-}
-
 .latest {
   background-color: white;
   border-radius: 8px;
@@ -246,12 +273,176 @@ font-family: var(--logo-font);
 .snippetPreview{
   margin: 1%;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: auto;
+  border-radius: 8px;
+  border: #72787e solid 2px;
+  position: relative;
+}
+
+.clipboardIcon{
+  background-color: var(--main-color);
+  padding: 10px;
+  position: absolute;
+  top:0;
+  right: 0;
+  cursor: pointer;
 }
 
 .snippet-form{
   margin-top: 80px;
   padding: 30px 50px;
-  background-color: lightgray;
+ color:var(--third-light-color);
   border-radius: 8px;
+  border: #72787e solid 2px;
+}
+
+.snippet-inputs {
+  background-color: #252a2e;
+  color: var(--third-light-color);
+}
+
+.snippet-inputs:focus {
+  background-color: #252a2e;
+  color: var(--third-light-color);
+}
+
+.snippet-icons {
+  text-align: right;
+}
+
+.sidebar {
+  height: 100vh;
+  background-color: var(--third-light-color);
+}
+
+.white-container {
+  border: hsla(0, 0%, 100%, 0.7) solid 2px;
+  height: auto;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px
+}
+
+.results{
+  background-color: hsla(0, 0%, 58%,0.5);
+  height: auto;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px
+}
+
+.results-title{
+  color: hsla(0, 0%, 100%, 0.8);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: var(--subtitle);
+  font-size: 1.1rem;
+}
+
+.sidebar-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container-title {
+  color: hsla(0, 0%, 100%, 0.8);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: var(--subtitle);
+  font-size: 1.1rem;
+}
+
+
+.card{
+  min-width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card-title {
+  font-family: var(--logo-font);
+  color: var(--third-light-color);
+  font-weight: 900;
+}
+
+.card-description {
+  color: var(--third-light-color);
+  font-size: 0.8rem;
+}
+
+.card-language {
+  color: var(--secondary-color);
+  font-family: var(--subtitle);
+  position: absolute;
+  bottom: 10px;
+}
+
+.snippet-overtitle{
+  color:  #72787e;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-family: var(--subtitle);
+ 
+}
+
+.snippet{
+  height: auto;
+}
+
+.success{
+  color: green
+}
+
+.snippet-title {
+  font-size: 1.2rem;
+  font-family: var(--logo-font);
+  color: var(--third-light-color);
+  font-weight: 900;
+}
+
+.snippet-description {
+  color: var(--third-light-color);
+  font-size: 1rem;
+}
+
+.snippet-language {
+  color: var(--secondary-color);
+  font-family: var(--subtitle);
+  position: absolute;
+  bottom: 10px;
+}
+
+
+.sidebar-links {
+  text-transform: uppercase;
+  font-family: var(--subtitle);
+  font-size: 1.5rem;
+}
+
+
+
+.modal-content {
+  background-color: #343a40; 
+  color: white; 
+}
+
+@media (max-width: 990px) {
+  .sidebar {
+    height: auto; /* Set the height to auto for medium and smaller screens */
+  }
+}
+
+@media (max-width: 1500px) {
+  .card{
+    height: 300px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .card{
+    height: 250px;
+  }
 }
