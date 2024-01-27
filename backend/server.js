@@ -1,6 +1,6 @@
 const express = require("express");
 const connectToDb = require("./config/connectToDb");
-require("dotenv").config();
+require('dotenv').config();
 const userController = require("./controllers/userController");
 const snipsController = require("./controllers/snipsController");
 const cookieParser = require("cookie-parser");
@@ -24,6 +24,9 @@ app.post("/login", userController.login);
 app.get("/checkAuth", requireAuth, userController.checkAuth);
 app.get("/logout", userController.logout);
 app.get("/user/:id", userController.getUser);
+
+//NEW feature for LEGACY PROJECT
+app.put("/user/:userId", requireAuth, userController.updateUser);
 
 //creating snips paths
 app.get("/snips", requireAuth, snipsController.getSnips);
