@@ -73,6 +73,8 @@ const login = async (req, res) => {
   }
 };
 
+
+
 const checkAuth = async (req, res) => {
   console.log(req.user);
   res.sendStatus(200);
@@ -113,11 +115,28 @@ const getUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const updateDta = req.body; 
+
+    const updatedUser = await User.findByIdAndUpdate(userId, updateDta, { new: true });
+    if (!updatedUser) {
+      return res.status(404).send('User not found');
+    }
+
+    res.status(200).send(updatedUser);
+  } catch (error) {
+    res.status(500).send({ message: 'Server error' });
+  }
+};
+
 module.exports = {
   signup,
   login,
   checkAuth,
   getLatestSnips,
   logout,
-  getUser
+  getUser,
+  updateUser
 };
