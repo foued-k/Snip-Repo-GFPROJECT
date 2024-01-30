@@ -1,21 +1,21 @@
-:root{
-  --main-color: #1E1E1E;
-  --secondary-color: #FF725E;
-  --third-light-color: #FBFBFB;  
-  --logo-font: 'Source Code Pro', monospace;
-  --body:'Open Sans', sans-serif;
-  --subtitle: 'Nanum Gothic Coding', monospace;
-
-
+:root {
+  --main-color: #1e1e1e;
+  --secondary-color: #ff725e;
+  --third-light-color: #fbfbfb;
+  --logo-font: "Source Code Pro", monospace;
+  --body: "Open Sans", sans-serif;
+  --subtitle: "Nanum Gothic Coding", monospace;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   min-height: 100vh;
 }
 
@@ -30,10 +30,10 @@ body {
   width: 100%;
 }
 
-.logo{
-font-family: var(--logo-font);
-font-weight: 900;
-font-size: 1.5rem;
+.logo {
+  font-family: var(--logo-font);
+  font-weight: 900;
+  font-size: 1.5rem;
 }
 
 .hello {
@@ -46,8 +46,8 @@ font-size: 1.5rem;
 }
 
 #main-nav-title > div {
-  display: flex; 
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -56,26 +56,26 @@ font-size: 1.5rem;
   font-size: 1.5rem;
 }
 
-.nav-bar{
+.nav-bar {
   padding: 5px;
   padding-left: 1%;
   display: flex;
 }
 
-.nav-container{
+.nav-container {
   padding: 0;
   margin: 0;
   justify-content: space-between;
 }
 
-.h3{
+.h3 {
   color: var(--main-color);
   font-size: 1rem;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
-.description{
+.description {
   color: var(--third-light-color);
 }
 
@@ -89,8 +89,8 @@ font-size: 1.5rem;
   background-color: #fe5c47;
 }
 
-.white{
-  color: var(--third-light-color)
+.white {
+  color: var(--third-light-color);
 }
 
 .signup-bodytext {
@@ -100,8 +100,7 @@ font-size: 1.5rem;
   font-size: 1.2rem;
 }
 
-
-.img-container{
+.img-container {
   display: flex;
   justify-content: flex-end;
 }
@@ -153,7 +152,9 @@ font-size: 1.5rem;
   margin-top: 10px;
 }
 
-.mySnippets, .dashboard, .card-title{
+.mySnippets,
+.dashboard,
+.card-title {
   color: var(--third-light-color);
 }
 
@@ -174,7 +175,7 @@ font-size: 1.5rem;
   margin-bottom: 30px;
 }
 
-.mySnippetsList{
+.mySnippetsList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-auto-rows: 20px;
@@ -188,9 +189,9 @@ font-size: 1.5rem;
 }
 
 .card-body {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
 .links {
@@ -200,7 +201,7 @@ font-size: 1.5rem;
   font-family: var(--subtitle);
 }
 
-.links:hover{
+.links:hover {
   background-color: #edf0f3;
 }
 
@@ -210,13 +211,12 @@ font-size: 1.5rem;
   background-color: #edf0f3;
   color: black;
   font-family: var(--subtitle);
-  padding: 2px
+  padding: 2px;
 }
 
-.links-snippets:hover{
+.links-snippets:hover {
   background-color: #d8dfe6;
 }
-
 
 .search-warning {
   color: #f86e7e;
@@ -231,32 +231,31 @@ font-size: 1.5rem;
   margin-left: 5px;
 }
 
-.alert{
+.alert {
   color: #9b2c39;
   padding-top: -3px;
 }
 
-.card-text, .homepage-account-link {
+.card-text,
+.homepage-account-link {
   color: var(--secondary-color);
 }
 
-.negative-margin{
+.negative-margin {
   margin-top: -130px;
 }
 
-
 .dashboard-menu {
-
   text-align: left;
   padding: 40px 0 0 0;
 }
 
-.dashboard-menu button{
+.dashboard-menu button {
   border-radius: 0;
-
 }
 
-.latestSnippets, .dashboard-menu {
+.latestSnippets,
+.dashboard-menu {
   background-color: var(--third-light-color);
   color: black;
 }
@@ -270,7 +269,7 @@ font-size: 1.5rem;
   margin-inline: auto;
 }
 
-.snippetPreview{
+.snippetPreview {
   margin: 1%;
   max-height: 90vh;
   overflow: auto;
@@ -279,19 +278,19 @@ font-size: 1.5rem;
   position: relative;
 }
 
-.clipboardIcon{
+.clipboardIcon {
   background-color: var(--main-color);
   padding: 10px;
   position: absolute;
-  top:0;
+  top: 0;
   right: 0;
   cursor: pointer;
 }
 
-.snippet-form{
+.snippet-form {
   margin-top: 80px;
   padding: 30px 50px;
- color:var(--third-light-color);
+  color: var(--third-light-color);
   border-radius: 8px;
   border: #72787e solid 2px;
 }
@@ -321,18 +320,18 @@ font-size: 1.5rem;
   height: auto;
   border-radius: 8px;
   padding: 10px;
-  margin: 10px
+  margin: 10px;
 }
 
-.results{
-  background-color: hsla(0, 0%, 58%,0.5);
+.results {
+  background-color: hsla(0, 0%, 58%, 0.5);
   height: auto;
   border-radius: 8px;
   padding: 10px;
-  margin: 10px
+  margin: 10px;
 }
 
-.results-title{
+.results-title {
   color: hsla(0, 0%, 100%, 0.8);
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -353,8 +352,7 @@ font-size: 1.5rem;
   font-size: 1.1rem;
 }
 
-
-.card{
+.card {
   min-width: 200px;
   height: 220px;
   display: flex;
@@ -381,20 +379,19 @@ font-size: 1.5rem;
   bottom: 10px;
 }
 
-.snippet-overtitle{
-  color:  #72787e;
+.snippet-overtitle {
+  color: #72787e;
   text-transform: uppercase;
   font-size: 0.8rem;
   font-family: var(--subtitle);
- 
 }
 
-.snippet{
+.snippet {
   height: auto;
 }
 
-.success{
-  color: green
+.success {
+  color: green;
 }
 
 .snippet-title {
@@ -416,20 +413,25 @@ font-size: 1.5rem;
   bottom: 10px;
 }
 
-
 .sidebar-links {
   text-transform: uppercase;
   font-family: var(--subtitle);
   font-size: 1.5rem;
 }
 
-
-
 .modal-content {
-  background-color: #343a40; 
-  color: white; 
+  background-color: #343a40;
+  color: white;
 }
 
+.edit-user-btn {
+  text-decoration: none;
+  color: whitesmoke;
+  border: none;
+}
+
+.edit-user-btn:hover {
+}
 
 @media (max-width: 990px) {
   .sidebar {
@@ -438,13 +440,13 @@ font-size: 1.5rem;
 }
 
 @media (max-width: 1500px) {
-  .card{
+  .card {
     height: 300px;
   }
 }
 
 @media (max-width: 1500px) {
-  .card{
+  .card {
     height: 250px;
   }
 }

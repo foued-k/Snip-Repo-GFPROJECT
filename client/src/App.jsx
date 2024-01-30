@@ -8,6 +8,7 @@ import AddSnippet from "./components/AddSnippet";
 import Dashboard from "./components/Dashboard";
 import MySnippets from "./components/MySnippets";
 import RequireAuth from "./components/RequireAuth";
+import EditUserInfo from "./components/EditUserInfo";
 
 function App() {
   // const [cookies, setCookie] = useCookies(["user"]);
@@ -29,8 +30,30 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route path="/newsnippet" element={<RequireAuth><AddSnippet /></RequireAuth>} />
-        <Route path="/mysnippets" element={<RequireAuth><MySnippets /></RequireAuth>} />
+        <Route
+          path="/newsnippet"
+          element={
+            <RequireAuth>
+              <AddSnippet />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/mysnippets"
+          element={
+            <RequireAuth>
+              <MySnippets />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/edituserinfo"
+          element={
+            <RequireAuth>
+              <EditUserInfo />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -102,15 +102,23 @@ const getLatestSnips = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const user = await User.findOne({_id: req.params.id});
+    const user = await User.findOne({ _id: req.params.id });
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
-    res.status(200).json({user});
+    res.status(200).json({ user });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal Server Error" });
   }
+};
+
+const updateUser = async (req, res) => {
+  const { userId } = req.params;
+  const updateData = req.body;
+  const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+    new: true,
+  });
 };
 
 module.exports = {
@@ -119,5 +127,6 @@ module.exports = {
   checkAuth,
   getLatestSnips,
   logout,
-  getUser
+  getUser,
+  updateUser,
 };
